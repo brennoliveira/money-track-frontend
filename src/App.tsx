@@ -1,23 +1,11 @@
-import './App.css'
-import { ThemeProvider } from 'styled-components';
-import { darkTheme } from './theme';
-import GlobalStyle from './globalStyle';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './pages/Login';
+import './assets/styles/index.css';
+import './assets/styles/App.css';
+import AppRoutes from './routes/AppRoutes';
 
 function App() {
   return (
-    <ThemeProvider theme={darkTheme}>
-      <GlobalStyle />
-      <Router>
-        <Routes>
-          <Route path='/login' element={<Login />}/>
-          <Route path='/register'/>
-          <Route path='/dashboard'/>
-        </Routes>
-      </Router>
-    </ThemeProvider>
-  )
+    <AppRoutes />
+  );
 }
 
-export default App
+export default App;
