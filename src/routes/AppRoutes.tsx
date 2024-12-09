@@ -1,13 +1,13 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from '../pages/Login/Login';
-// import RegisterPage from '../pages/RegisterPage';
+import Register from '../pages/Resgister/Register';
 // import DashboardPage from '../pages/DashboardPage';
 
 const AppRoutes = () => (
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Login />} />
-      <Route path="/register" />
+      <Route path="/signup" element={<Register />} />
       <Route path="/dashboard" />
     </Routes>
   </BrowserRouter>
