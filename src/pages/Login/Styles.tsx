@@ -20,7 +20,8 @@ export const FormWrapper = styled.div`
 export const Logo = styled.img`
   width: 300px; /* Ajuste conforme necessário */
   height: auto;
-  // margin-bottom: 1rem;
+  margin-bottom: -4rem;
+  margin-top: -4rem;
 `;
 
 export const Form = styled.form`
