@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useState } from "react";
 import * as S from './Styles.tsx';
+import api from "../../services/api.ts";
 
 const ForgotPassword: React.FC = () => {
   const [email, setEmail] = useState<string>('');
@@ -17,7 +17,7 @@ const ForgotPassword: React.FC = () => {
 
     setIsLoading(true);
     try {
-      await axios.post('/api/forgot-password', { email });
+      await api.post('/api/forgot-password', { email });
       setMessage('Um email de recuperação foi enviado.');
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {

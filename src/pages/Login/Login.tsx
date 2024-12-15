@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from './Styles';
+import api from "../../services/api";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const Login: React.FC = () => {
 
     setIsLoading(true);
     try {
-      const response = await axios.post('/api/login', { email, password });
+      const response = await api.post('/api/login', { email, password });
       console.log(response.data)
       localStorage.setItem('token', response.data.token);
       navigate('/dashboard');

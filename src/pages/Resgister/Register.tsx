@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from './Styles';
+import api from "../../services/api";
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
@@ -27,8 +27,8 @@ const Register: React.FC = () => {
 
     setIsLoading(true);
     try {
-      await axios.post('/api/register', { name, email, password });
-      navigate('/login');
+      await api.post('/api/users', { name, email, password });
+      navigate('/');
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setErrorMessage('Erro ao realizar o cadastro. Tente novamente.');
