@@ -1,12 +1,18 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+
+  html, #root {
+    height: 100%;
+    width: 100%;
+  }
+
   body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
     background-color: ${({ theme }) => theme.background};
-    color: ${({ theme }) => theme.text};
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
   }
 
   a {
