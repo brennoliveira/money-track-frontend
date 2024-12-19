@@ -3,6 +3,8 @@ import * as S from "./styles";
 import { TransactionModel } from "../../models/TransactionModel";
 import api from "../../services/api";
 import { TransactionTypes } from "../../enums";
+import Button from "../../components/Button";
+import TransactionModal from "../../components/CreateTransaction";
 
 const Dashboard = () => {
   const [userData, setUserData] = useState({
@@ -13,6 +15,7 @@ const Dashboard = () => {
   const [selectedTransaction, setSelectedTransaction] = useState<TransactionModel | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,6 +60,7 @@ const Dashboard = () => {
 
         <S.TransactionsWrapper>
           <h2>Transações</h2>
+          <Button onClick={() => setIsModalOpen(true)}>Nova Transação</Button>
           <S.TransactionsList>
             {transactions.map((transaction) => (
               <S.TransactionItem
@@ -64,7 +68,7 @@ const Dashboard = () => {
                 onClick={() => setSelectedTransaction(transaction)}
                 isExpense={transaction.type === TransactionTypes.EXPENSE}
               >
-                <p>Data: {new Date(transaction.createdAt).toLocaleDateString()}</p>
+                <p>Data: {new Date(transaction.transactionDate).toLocaleDateString()}</p>
                 <p className="amount">R$ {transaction.amount.toFixed(2)}</p>
                 <p>Categoria: {transaction.category?.name}</p>
               </S.TransactionItem>
@@ -85,6 +89,7 @@ const Dashboard = () => {
           </S.ModalContent>
         </S.Modal>
       )}
+      {isModalOpen && <TransactionModal onClose={() => setIsModalOpen(false)}/>}
     </S.Container>
   );
 };
