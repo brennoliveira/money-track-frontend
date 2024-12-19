@@ -1,6 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
   html, #root {
     height: 100%;
@@ -9,10 +14,12 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: Arial, sans-serif;
     background-color: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.text};
   }
 
   a {

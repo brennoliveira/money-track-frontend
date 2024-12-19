@@ -5,6 +5,7 @@ import api from "../../services/api";
 import { TransactionTypes } from "../../enums";
 import Button from "../../components/Button";
 import TransactionModal from "../../components/CreateTransaction";
+import TransactionList from "../../components/TransactionsList";
 
 const Dashboard = () => {
   const [userData, setUserData] = useState({
@@ -15,7 +16,7 @@ const Dashboard = () => {
   const [selectedTransaction, setSelectedTransaction] = useState<TransactionModel | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,24 +58,14 @@ const Dashboard = () => {
           <h2>Saldo Total</h2>
           <p>R$ {userData.balance.toFixed(2)}</p>
         </S.BalanceCard>
+        
+        <Button onClick={() => setIsModalOpen(true)}>Nova Transação</Button>
 
-        <S.TransactionsWrapper>
-          <h2>Transações</h2>
-          <Button onClick={() => setIsModalOpen(true)}>Nova Transação</Button>
-          <S.TransactionsList>
-            {transactions.map((transaction) => (
-              <S.TransactionItem
-                key={transaction.id}
-                onClick={() => setSelectedTransaction(transaction)}
-                isExpense={transaction.type === TransactionTypes.EXPENSE}
-              >
-                <p>Data: {new Date(transaction.transactionDate).toLocaleDateString()}</p>
-                <p className="amount">R$ {transaction.amount.toFixed(2)}</p>
-                <p>Categoria: {transaction.category?.name}</p>
-              </S.TransactionItem>
-            ))}
-          </S.TransactionsList>
-        </S.TransactionsWrapper>
+        <TransactionList
+          transactions={transactions}
+          onSelectTransaction={(transaction) => setSelectedTransaction(transaction)}
+        />
+
       </S.Content>
 
       {selectedTransaction && (
@@ -89,7 +80,8 @@ const Dashboard = () => {
           </S.ModalContent>
         </S.Modal>
       )}
-      {isModalOpen && <TransactionModal onClose={() => setIsModalOpen(false)}/>}
+
+      {isModalOpen && <TransactionModal onClose={() => setIsModalOpen(false)} />}
     </S.Container>
   );
 };

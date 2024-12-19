@@ -4,11 +4,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Alinhar conteúdo ao topo */
-  width: 100%;
-  height: 100%; /* Faz com que o componente ocupe toda a altura */
+  justify-content: flex-start;
+  width: 100%; /* Garante que ocupe toda a largura */
+  height: 100vh; /* Garante que ocupe toda a altura */
   background-color: #1e1e2f;
   color: #f5f5f5;
+  overflow: hidden; /* Evita barras de rolagem desnecessárias */
 `;
 
 export const Navbar = styled.nav`
@@ -35,10 +36,12 @@ export const NavItem = styled.a`
 export const Content = styled.div`
   width: 90%;
   max-width: 1200px;
-  margin: 20px auto;
+  flex: 1; /* Faz com que o conteúdo ocupe o espaço restante */
+  margin: 20px 0; /* Margens verticais */
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow: hidden; /* Impede que elementos ultrapassem os limites */
 `;
 
 export const BalanceCard = styled.div`
