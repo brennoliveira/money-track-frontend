@@ -14,9 +14,9 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions, onSelec
             isExpense={transaction.type === TransactionTypes.EXPENSE}
             onClick={() => onSelectTransaction(transaction)}
           >
-            <p>Data: {new Date(transaction.transactionDate).toLocaleDateString()}</p>
-            <p className="amount">R$ {transaction.amount.toFixed(2)}</p>
             <p>Categoria: {transaction.category?.name}</p>
+            <p className="amount">R$ {transaction.amount.toFixed(2)}</p>
+            <p>Data: {new Date(transaction.transactionDate).toLocaleDateString()}</p>
           </S.TransactionItem>
         ))}
       </S.TransactionsList>

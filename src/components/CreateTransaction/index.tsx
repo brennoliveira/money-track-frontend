@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { TransactionTypes } from "../../enums";
+import api from "../../services/api";
 import * as S from "./styles";
 import { TransactionModalProps } from "./types";
-import { TransactionTypes } from "../../enums";
-import { CategoryModel } from "../../models";
-import api from "../../services/api";
 
-const TransactionModal: React.FC<TransactionModalProps> = ({ onClose }) => {
-  const [categories, setCategories] = useState<CategoryModel[]>([]);
+const TransactionModal: React.FC<TransactionModalProps> = ({ 
+  onClose,
+  categories,
+ }) => {
   const [formData, setFormData] = useState({
     title: "",
     amount: 0,
     type: TransactionTypes.EXPENSE,
-    categoryId: undefined,
+    categoryId: categories[0]?.id || undefined,
     transactionDate: new Date().toDateString().split("T")[0],
     description: undefined,
   });
@@ -37,27 +38,6 @@ const TransactionModal: React.FC<TransactionModalProps> = ({ onClose }) => {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const response = await api.get("/api/categories");
-        setCategories(response.data);
-      } catch (error) {
-        console.error("Erro ao buscar categorias:", error);
-      }
-    };
-  
-    fetchCategories();
-  }, []);
-  
-  useEffect(() =>{
-    console.log(categories)
-  }, [categories])
-
-  useEffect(() =>{
-    console.log(`form: ${JSON.stringify(formData)}`)
-  }, [formData])
 
   return (
     <S.ModalOverlay>
