@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const TransactionsWrapper = styled.div`
   width: 100%;
   flex: 1;
-  overflow-y: auto;
   padding: 10px;
   background-color: #1e1e2f;
   border-radius: 8px;
@@ -48,6 +47,7 @@ export const TransactionsHeader = styled.div`
 
     &:last-child {
       text-align: right;
+      width: 100px;
   }
 `;
 
@@ -65,6 +65,7 @@ export const HeaderItem = styled.div`
 `;
 
 export const TransactionsList = styled.ul`
+  overflow-y: auto;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -75,10 +76,10 @@ export const TransactionItem = styled.li<{ isExpense: boolean }>`
   padding: 8px 12px;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 12px;
   border-bottom: 1px solid #444;
   color: #fff;
-  cursor: pointer;
+  // cursor: pointer;
+  position: relative;
 
   &:hover {
     background: #3c3c3c;
@@ -102,3 +103,39 @@ export const TransactionItem = styled.li<{ isExpense: boolean }>`
     }
   }
 `;
+
+export const ActionMenu = styled.div<{ isVisible: boolean }>`
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #333;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  min-width: 120px;  // Largura reduzida para um estilo de menu compacto
+  padding: 5px 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  
+  ${({ isVisible }: { isVisible: boolean }) =>
+    isVisible &&
+    `
+    opacity: 1;
+    visibility: visible;
+  `}
+`;
+
+export const ActionMenuItem = styled.div`
+  padding: 8px 12px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-align: left;
+
+  &:hover {
+    background: #555;
+  }
+`;
+
+

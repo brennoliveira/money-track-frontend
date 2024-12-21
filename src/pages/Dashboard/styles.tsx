@@ -102,40 +102,6 @@ export const TransactionItem = styled.li<{ isExpense: boolean }>`
   }
 `;
 
-export const Modal = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const ModalContent = styled.div`
-  background-color: #292940;
-  padding: 20px;
-  border-radius: 8px;
-  color: #f5f5f5;
-  text-align: center;
-`;
-
-export const CloseButton = styled.button`
-  background-color: #ff4d4f;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  margin-top: 20px;
-  cursor: pointer;
-  border-radius: 8px;
-
-  &:hover {
-    background-color: #ff7875;
-  }
-`;
-
 export const Loader = styled.div`
   font-size: 1.5rem;
   text-align: center;

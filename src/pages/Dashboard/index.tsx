@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import * as S from "./styles";
-import { TransactionModel } from "../../models/TransactionModel";
-import api from "../../services/api";
-import { TransactionTypes } from "../../enums";
+import { FaPlus } from "react-icons/fa";
+import BalanceCard from "../../components/BalanceCard";
 import Button from "../../components/Button";
 import TransactionModal from "../../components/CreateTransaction";
 import TransactionList from "../../components/TransactionsList";
 import { CategoryModel } from "../../models";
-import BalanceCard from "../../components/BalanceCard";
-import { FaPlus } from "react-icons/fa";
+import { TransactionModel } from "../../models/TransactionModel";
+import api from "../../services/api";
+import * as S from "./styles";
 
 const Dashboard = () => {
   const [userData, setUserData] = useState({
@@ -16,7 +15,6 @@ const Dashboard = () => {
     balance: 0,
   });
   const [transactions, setTransactions] = useState<TransactionModel[]>([]);
-  const [selectedTransaction, setSelectedTransaction] = useState<TransactionModel | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -71,26 +69,9 @@ const Dashboard = () => {
 
         <TransactionList
           transactions={transactions}
-          onSelectTransaction={(transaction) => setSelectedTransaction(transaction)}
         />
       </S.Content>
 
-      {selectedTransaction && (
-        <S.Modal>
-          <S.ModalContent>
-            <h2>Detalhes da Transação</h2>
-            <p>Título: {selectedTransaction.title}</p>
-            <p>Quantia: R$ {selectedTransaction.amount.toFixed(2)}</p>
-            <p>Tipo: {selectedTransaction.type === TransactionTypes.EXPENSE ? "Despesa" : "Receita"}</p>
-            <p>Categoria: {selectedTransaction.category?.name}</p>
-            <p>Data: {new Date(selectedTransaction.createdAt).toLocaleDateString()}</p>
-            {selectedTransaction.description && (
-              <p>Descrição: {selectedTransaction.description}</p>
-            )}
-            <S.CloseButton onClick={() => setSelectedTransaction(null)}>Fechar</S.CloseButton>
-          </S.ModalContent>
-        </S.Modal>
-      )}
 
       {isModalOpen && <TransactionModal categories={categories} onClose={() => setIsModalOpen(false)} />}
     </S.Container>
