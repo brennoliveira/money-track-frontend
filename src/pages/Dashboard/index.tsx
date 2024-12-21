@@ -8,6 +8,7 @@ import { CategoryModel } from "../../models";
 import { TransactionModel } from "../../models/TransactionModel";
 import api from "../../services/api";
 import * as S from "./styles";
+import Navbar from "../../components/Navbar";
 
 const Dashboard = () => {
   const [userData, setUserData] = useState({
@@ -19,6 +20,10 @@ const Dashboard = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [categories, setCategories] = useState<CategoryModel[]>([]);
+
+  const handleLogout = () => {
+    window.localStorage.clear();
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,11 +56,7 @@ const Dashboard = () => {
 
   return (
     <S.Container>
-      <S.Navbar>
-        <S.NavItem>Home</S.NavItem>
-        <S.NavItem>Transações</S.NavItem>
-        <S.NavItem>Sair</S.NavItem>
-      </S.Navbar>
+      <Navbar onLogout={handleLogout} />
 
       <S.Content>
         <S.TransactionHeader>
