@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const TransactionsWrapper = styled.div`
   width: 100%;
-  flex: 1; /* Faz com que o wrapper ocupe o espaço restante disponível */
-  overflow-y: auto; /* Permite rolagem apenas das transações, se necessário */
+  flex: 1;
+  overflow-y: auto;
   padding: 10px;
   background-color: #1e1e2f;
   border-radius: 8px;
@@ -27,6 +27,42 @@ export const TransactionsWrapper = styled.div`
   }
 `;
 
+export const TransactionsHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background-color: #333;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-bottom: 10px;
+
+  > div {
+    flex: 1;
+    text-align: center; 
+  }
+
+  &:first-child {
+      text-align: left;
+  }
+
+    &:last-child {
+      text-align: right;
+  }
+`;
+
+export const HeaderItem = styled.div`
+  flex: 1;
+  text-align: center;
+
+  &:first-child {
+    text-align: left;
+  }
+
+  &:last-child {
+    text-align: right;
+  }
+`;
 
 export const TransactionsList = styled.ul`
   list-style: none;
@@ -36,6 +72,7 @@ export const TransactionsList = styled.ul`
 
 export const TransactionItem = styled.li<{ isExpense: boolean }>`
   display: flex;
+  padding: 8px 12px;
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
@@ -50,5 +87,18 @@ export const TransactionItem = styled.li<{ isExpense: boolean }>`
   .amount {
     font-weight: bold;
     color: ${({ isExpense }) => (isExpense ? "#ff4d4d" : "#4caf50")};
+  }
+
+  > p {
+    flex: 1;
+    text-align: center;
+
+    &:first-child {
+      text-align: left;
+    }
+
+    &:last-child {
+      text-align: right;
+    }
   }
 `;
