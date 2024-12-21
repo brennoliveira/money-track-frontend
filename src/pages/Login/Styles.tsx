@@ -18,7 +18,7 @@ export const FormWrapper = styled.div`
 `;
 
 export const Logo = styled.img`
-  width: 300px; /* Ajuste conforme necessário */
+  width: 300px;
   height: auto;
   margin-bottom: -4rem;
   margin-top: -4rem;
@@ -34,15 +34,15 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  width: 100%; /* Largura ajustada */
-  max-width: 350px; /* Define um limite */
+  width: 100%;
+  max-width: 350px;
   margin-bottom: 1rem;
   padding: 0.75rem 1rem;
   border: 1px solid ${({ theme }) => theme.primary};
   border-radius: 5px;
   font-size: 1rem;
   outline: none;
-  transition: all 0.3s ease; /* Adiciona transição para suavizar o foco */
+  transition: all 0.3s ease;
 
   &:focus {
     border-color: ${({ theme }) => theme.secondary};
@@ -52,30 +52,51 @@ export const Input = styled.input`
 
 export const Label = styled.label`
   font-size: 1rem;
-  color: #808080;
-  margin-left: -0.5rem;
+  color: #fff;
+  margin-left: 0.5rem;
   align-self: flex-start;
+`;
+
+export const Icon = styled.div`
+  position: absolute;
+  top: 0;
+  right: 15px;
+  bottom: 15px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #ccc;
+
+  &:hover {
+    color: #f39c12;
+  }
+`;
+
+export const PasswordContainer = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 400px;
 `;
 
 export const Button = styled.button`
   background-color: ${({ theme }) => theme.primary};
   color: ${({ theme }) => theme.text};
-  padding: 0.5rem 1.5rem; /* Botão menor */
+  padding: 0.5rem 1.5rem;
   border: none;
   border-radius: 5px;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease-in-out; /* Transição suave */
-  align-self: center; /* Centraliza o botão */
+  transition: all 0.3s ease-in-out;
+  align-self: center;
 
   &:hover {
     background-color: ${({ theme }) => theme.secondary};
-    transform: scale(1.05); /* Aumenta o tamanho levemente ao passar o mouse */
+    transform: scale(1.05);
   }
 
   &:active {
-    transform: scale(1); /* Retorna ao tamanho original ao clicar */
+    transform: scale(1);
   }
 `;
 
@@ -93,7 +114,7 @@ export const PasswordLink = styled.a`
   text-decoration: none;
 
   &:hover {
-    text-decoration: underline;
+    color: ${({ theme }) => theme.primary};
   }
 `;
 
@@ -104,7 +125,7 @@ export const SignUpLink = styled.a`
   text-decoration: none;
 
   &:hover {
-    text-decoration: underline;
+    color: ${({ theme }) => theme.primary};
   }
 `;
 
@@ -136,7 +157,7 @@ export const Loader = styled.div`
 `;
 
 export const SocialButton = styled.button`
-  background-color: #db4437; /* Cor do Google */
+  background-color: #db4437;
   color: white;
   padding: 0.75rem 1.5rem;
   margin: 0.5rem;
@@ -146,6 +167,6 @@ export const SocialButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #c1351d; /* Cor de hover */
+    background-color: #c1351d;
   }
 `;

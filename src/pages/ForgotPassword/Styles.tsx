@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-// Wrapper geral para centralizar e estilizar o formulário
 export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -18,28 +17,25 @@ export const FormWrapper = styled.div`
   }
 `;
 
-// Logo do sistema
 export const Logo = styled.img`
-  width: 300px; /* Ajuste conforme necessário */
+  width: 300px;
   height: auto;
   margin-bottom: -4rem;
   margin-top: -4rem;
 `;
 
-// Estilo para o formulário
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza os elementos */
-  width: 100%; /* Adapta o formulário à largura do contêiner */
-  max-width: 400px; /* Define um limite de largura */
-  margin: 0 auto; /* Centraliza horizontalmente */
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 `;
 
-// Estilo para os campos de entrada
 export const Input = styled.input`
-  width: 100%; /* Largura ajustada */
-  max-width: 350px; /* Define um limite */
+  width: 100%;
+  max-width: 350px;
   margin-bottom: 1rem;
   padding: 0.75rem 1rem;
   border: 1px solid ${({ theme }) => theme.primary};
@@ -56,23 +52,22 @@ export const Input = styled.input`
 
 export const Label = styled.label`
   font-size: 1rem;
-  color: #808080;
-  margin-left: -0.5rem;
+  color: #fff;
+  margin-left: 0.5rem;
   align-self: flex-start;
 `;
 
-// Botão de ação
 export const Button = styled.button`
   background-color: ${({ theme }) => theme.primary};
   color: ${({ theme }) => theme.text};
-  padding: 0.5rem 1.5rem; /* Botão menor */
+  padding: 0.5rem 1.5rem;
   border: none;
   border-radius: 5px;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  align-self: center; /* Centraliza o botão */
+  align-self: center;
 
   &:hover {
     background-color: ${({ theme }) => theme.secondary};
@@ -89,7 +84,6 @@ export const Button = styled.button`
   }
 `;
 
-// Mensagem de erro ou sucesso
 export const ErrorMessage = styled.span`
   color: ${({ theme }) => theme.error};
   font-size: 0.875rem;
@@ -104,7 +98,6 @@ export const SuccessMessage = styled.span`
   text-align: center;
 `;
 
-// Links adicionais (voltar para login ou criar conta)
 export const PasswordLink = styled.a`
   margin-top: 1rem;
   color: white;
@@ -112,15 +105,10 @@ export const PasswordLink = styled.a`
   text-decoration: none;
 
   &:hover {
-    text-decoration: underline;
+    color: ${({ theme }) => theme.primary};
   }
 `;
 
-export const SignUpLink = styled(PasswordLink)`
-  margin-top: 0.5rem;
-`;
-
-// Loader (caso queira adicionar um indicador de carregamento)
 export const LoaderWrapper = styled.div`
   margin-top: 1rem;
 `;

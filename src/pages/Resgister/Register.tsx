@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from './Styles';
 import api from "../../services/api";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const Register: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,22 +65,32 @@ const Register: React.FC = () => {
         />
 
         <S.Label htmlFor="password">Senha:</S.Label>
-        <S.Input
-          id="password"
-          type="password"
-          placeholder="12345678"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <S.PasswordContainer>
+          <S.Input
+            id="password"
+            type={showPassword ? "text" : "password"}
+            placeholder="*******"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <S.Icon onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </S.Icon>
+        </S.PasswordContainer>
 
         <S.Label htmlFor="confirmPassword">Confirmação de Senha:</S.Label>
-        <S.Input
-          id="confirmPassword"
-          type="password"
-          placeholder="12345678"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
+        <S.PasswordContainer>
+          <S.Input
+            id="confirmPassword"
+            type={showPassword ? "text" : "password"}
+            placeholder="*******"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          <S.Icon onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </S.Icon>
+        </S.PasswordContainer>
 
         <S.Button type="submit" disabled={isLoading}>
           {isLoading ? 'Carregando...' : 'Cadastrar'}

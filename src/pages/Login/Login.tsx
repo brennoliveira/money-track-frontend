@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from './Styles';
 import api from "../../services/api";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -9,6 +10,7 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,13 +50,19 @@ const Login: React.FC = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <S.Label htmlFor="password">Senha:</S.Label>
-        <S.Input
-          type="password"
-          placeholder="12345678"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <S.PasswordContainer>
+          <S.Input
+            id="password"
+            type={showPassword ? "text" : "password"}
+            placeholder="*******"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <S.Icon onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </S.Icon>
+        </S.PasswordContainer>
+
         <S.Button type="submit" disabled={isLoading}>
           {isLoading ? 'Carregando' : 'Login'}
         </S.Button>
