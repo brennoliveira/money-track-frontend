@@ -7,6 +7,7 @@ import Button from "../../components/Button";
 import TransactionModal from "../../components/CreateTransaction";
 import TransactionList from "../../components/TransactionsList";
 import { CategoryModel } from "../../models";
+import BalanceCard from "../../components/BalanceCard";
 
 const Dashboard = () => {
   const [userData, setUserData] = useState({
@@ -58,10 +59,7 @@ const Dashboard = () => {
       </S.Navbar>
 
       <S.Content>
-        <S.BalanceCard>
-          <h2>Saldo Total</h2>
-          <p>R$ {userData.balance.toFixed(2)}</p>
-        </S.BalanceCard>
+        <BalanceCard balance={userData.balance}></BalanceCard>
         
         <Button onClick={() => setIsModalOpen(true)}>Nova Transação</Button>
 

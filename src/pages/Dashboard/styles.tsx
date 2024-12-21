@@ -5,11 +5,11 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 100%; /* Garante que ocupe toda a largura */
-  height: 100vh; /* Garante que ocupe toda a altura */
+  width: 100%;
+  height: 100vh;
   background-color: #1e1e2f;
   color: #f5f5f5;
-  overflow: hidden; /* Evita barras de rolagem desnecessárias */
+  overflow: hidden;
 `;
 
 export const Navbar = styled.nav`
@@ -34,14 +34,14 @@ export const NavItem = styled.a`
 `;
 
 export const Content = styled.div`
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
-  flex: 1; /* Faz com que o conteúdo ocupe o espaço restante */
-  margin: 20px 0; /* Margens verticais */
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
-  overflow: hidden; /* Impede que elementos ultrapassem os limites */
+  padding: 0 20px;
 `;
 
 export const BalanceCard = styled.div`
