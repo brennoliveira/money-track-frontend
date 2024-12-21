@@ -8,6 +8,7 @@ import TransactionModal from "../../components/CreateTransaction";
 import TransactionList from "../../components/TransactionsList";
 import { CategoryModel } from "../../models";
 import BalanceCard from "../../components/BalanceCard";
+import { FaPlus } from "react-icons/fa";
 
 const Dashboard = () => {
   const [userData, setUserData] = useState({
@@ -19,7 +20,7 @@ const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [categories, setCategories] = useState<CategoryModel[]>([])
+  const [categories, setCategories] = useState<CategoryModel[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,15 +60,19 @@ const Dashboard = () => {
       </S.Navbar>
 
       <S.Content>
-        <BalanceCard balance={userData.balance}></BalanceCard>
-        
-        <Button onClick={() => setIsModalOpen(true)}>Nova Transação</Button>
+        <S.TransactionHeader>
+          <BalanceCard balance={userData.balance}></BalanceCard>
+          <S.NewTransactionButton>
+            <Button onClick={() => setIsModalOpen(true)} color="#4caf50">
+              <FaPlus /> Nova Transação
+            </Button>
+          </S.NewTransactionButton>
+        </S.TransactionHeader>
 
         <TransactionList
           transactions={transactions}
           onSelectTransaction={(transaction) => setSelectedTransaction(transaction)}
         />
-
       </S.Content>
 
       {selectedTransaction && (

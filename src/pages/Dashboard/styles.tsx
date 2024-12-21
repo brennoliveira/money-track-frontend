@@ -152,3 +152,18 @@ export const ErrorMessage = styled.div`
   padding: 10px;
   border-radius: 8px;
 `;
+
+export const TransactionHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  position: relative;
+`;
+
+export const NewTransactionButton = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+`;

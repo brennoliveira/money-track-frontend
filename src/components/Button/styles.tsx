@@ -4,7 +4,7 @@ export const StyledButton = styled.button<{ color?: string; textColor?: string; 
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -18,5 +18,9 @@ export const StyledButton = styled.button<{ color?: string; textColor?: string; 
   &:disabled {
     background-color: #a1a1a1;
     cursor: not-allowed;
+  }
+
+  svg {
+    font-size: 15px;
   }
 `;
