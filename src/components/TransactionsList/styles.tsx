@@ -35,20 +35,6 @@ export const TransactionsHeader = styled.div`
   font-weight: bold;
   border-radius: 8px;
   margin-bottom: 10px;
-
-  > div {
-    flex: 1;
-    text-align: center; 
-  }
-
-  &:first-child {
-      text-align: left;
-  }
-
-    &:last-child {
-      text-align: right;
-      width: 100px;
-  }
 `;
 
 export const HeaderItem = styled.div`
@@ -57,10 +43,27 @@ export const HeaderItem = styled.div`
 
   &:first-child {
     text-align: left;
+    flex: 1;
+  }
+
+  &:nth-child(2) {
+    text-align: left;
+    flex: 1;
+  }
+
+  &:nth-child(3) {
+    text-align: left;
+    flex: 1; 
+  }
+
+  &:nth-child(4) {
+    text-align: left;
+    flex: 1; 
   }
 
   &:last-child {
     text-align: right;
+    flex: 0 0 80px;
   }
 `;
 
@@ -78,7 +81,6 @@ export const TransactionItem = styled.li<{ isExpense: boolean }>`
   align-items: center;
   border-bottom: 1px solid #444;
   color: #fff;
-  // cursor: pointer;
   position: relative;
 
   &:hover {
@@ -96,10 +98,27 @@ export const TransactionItem = styled.li<{ isExpense: boolean }>`
 
     &:first-child {
       text-align: left;
+      flex: 1;
+    }
+
+    &:nth-child(2) {
+      text-align: left;
+      flex: 1;
+    }
+
+    &:nth-child(3) {
+      text-align: left;
+      flex: 1;
+    }
+
+    &:nth-child(4) {
+      text-align: left;
+      flex: 1;
     }
 
     &:last-child {
       text-align: right;
+      flex: 0 0 80px;
     }
   }
 `;

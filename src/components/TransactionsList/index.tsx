@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { FaFile } from "react-icons/fa";
+import { FaEllipsisVertical, FaX } from "react-icons/fa6";
 import { TransactionTypes } from "../../enums";
+import { TransactionModel } from "../../models";
+import api from "../../services/api";
+import TransactionDetailModal from "../TransactionDetailModal";
 import * as S from "./styles";
 import { TransactionListProps } from "./types";
-import { FaEllipsisVertical, FaX } from "react-icons/fa6";
-import api from "../../services/api";
-import { FaFile } from "react-icons/fa";
-import { TransactionModel } from "../../models";
-import TransactionDetailModal from "../TransactionDetailModal";
 
 const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
   const [openMenuId, setOpenMenuId] = useState<number | null>(null);
   const [selectedTransaction, setSelectedTransaction] = useState<TransactionModel | null>(null);
+  const [updatedTransactions, setUpdatedTransactions] = useState<TransactionModel[]>(transactions);
 
   const toggleMenu = (transactionId: number) => {
     setOpenMenuId((prev) => (prev === transactionId ? null : transactionId));
@@ -18,7 +19,10 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
 
   const handleDeleteTransaction = async (transactionId: number) => {
     try {
-      await api.delete(`/api/transactions/${transactionId}`)
+      await api.delete(`/api/transactions/${transactionId}`);
+
+      setUpdatedTransactions((prev) => prev.filter((transaction) => transaction.id !== transactionId));
+      window.location.reload();
     } catch (error) {
       console.log("erro ao excluir: ", error);
     }
@@ -33,11 +37,16 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
     setSelectedTransaction(null);
   };
 
+  useEffect(() => {
+    setUpdatedTransactions(transactions);
+  }, [transactions]);
+
   return (
     <S.TransactionsWrapper>
       <h2>Transações</h2>
 
       <S.TransactionsHeader>
+        <S.HeaderItem>Título</S.HeaderItem>
         <S.HeaderItem>Categoria</S.HeaderItem>
         <S.HeaderItem>Valor</S.HeaderItem>
         <S.HeaderItem>Data</S.HeaderItem>
@@ -45,12 +54,13 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
       </S.TransactionsHeader>
 
       <S.TransactionsList>
-        {transactions.map((transaction) => (
+        {updatedTransactions.map((transaction) => (
           <S.TransactionItem
             key={transaction.id}
             isExpense={transaction.type === TransactionTypes.EXPENSE}
             // onClick={() => onSelectTransaction(transaction)}
           >
+            <p>{transaction.title}</p>
             <p>{transaction.category?.name}</p>
             <p className="amount">R$ {transaction.amount.toFixed(2)}</p>
             <p>{new Date(transaction.transactionDate).toLocaleDateString()}</p>
@@ -63,7 +73,7 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
                 <S.ActionMenuItem onClick={() => handleDetails(transaction)}>
                   <FaFile /> Ver Detalhes
                 </S.ActionMenuItem>
-                <S.ActionMenuItem onClick={() => handleDeleteTransaction(transaction.id)}>
+                <S.ActionMenuItem onClick={async () => await handleDeleteTransaction(transaction.id)}>
                   <FaX /> Excluir Transação
                 </S.ActionMenuItem>
               </S.ActionMenu>

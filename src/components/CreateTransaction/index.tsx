@@ -33,6 +33,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
 
       await api.post("/api/transactions", { ...formData });
       
+      window.location.reload();
       onClose();
     } catch (error) {
       console.log(error);
