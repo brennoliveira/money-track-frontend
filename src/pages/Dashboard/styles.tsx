@@ -5,8 +5,8 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 100%;
-  height: 100vh;
+  // width: 100%;
+  height: 120%;
   background-color: #1e1e2f;
   color: #f5f5f5;
   overflow: hidden;

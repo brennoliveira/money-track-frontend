@@ -1,25 +1,26 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
+const PrivateGlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
     // box-sizing: border-box;
   }
 
-  html, #root {
+  html, body, #root {
     height: 100%;
     width: 100%;
+    // margin-left: -10px;
+    // margin-right: 10px;
   }
 
   body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial, sans-serif;
-    background-color: ${({ theme }) => theme.background};
+    // display: flex;
+    // flex-direction: column;
+    background-color: #1e1e2f;
     color: ${({ theme }) => theme.text};
+    font-family: Arial, sans-serif;
+    overflow: hidden;
   }
 
   a {
@@ -42,4 +43,4 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default GlobalStyle;
+export default PrivateGlobalStyle;
