@@ -152,6 +152,7 @@ export const ActionMenuItem = styled.div`
   cursor: pointer;
   font-size: 0.9rem;
   text-align: left;
+  border-bottom: 1px solid #999;
 
   &:hover {
     background: #555;

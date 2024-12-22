@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaFile } from "react-icons/fa";
+import { FaEdit, FaFile } from "react-icons/fa";
 import { FaEllipsisVertical, FaX } from "react-icons/fa6";
 import { TransactionTypes } from "../../enums";
 import { TransactionModel } from "../../models";
@@ -8,13 +8,30 @@ import TransactionDetailModal from "../TransactionDetailModal";
 import * as S from "./styles";
 import { TransactionListProps } from "./types";
 import { toast } from "react-toastify";
+import EditTransactionModal from "../EditTransactionModal";
 
 const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
   const [openMenuId, setOpenMenuId] = useState<number | null>(null);
   const [selectedTransaction, setSelectedTransaction] = useState<TransactionModel | null>(null);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const toggleMenu = (transactionId: number) => {
     setOpenMenuId((prev) => (prev === transactionId ? null : transactionId));
+  };
+
+  const handleEditTransaction = (transaction: TransactionModel) => {
+    setSelectedTransaction(transaction);
+    setIsEditModalOpen(true);
+    setOpenMenuId(null);
+  };
+
+  const closeEditModal = () => {
+    setIsEditModalOpen(false);
+    setSelectedTransaction(null);
+  };
+
+  const refreshTransactions = () => {
+    window.location.reload();
   };
 
   const handleDeleteTransaction = async (transactionId: number) => {
@@ -80,6 +97,9 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
                 <S.ActionMenuItem onClick={() => handleDetails(transaction)}>
                   <FaFile /> Ver Detalhes
                 </S.ActionMenuItem>
+                <S.ActionMenuItem onClick={() => handleEditTransaction(transaction)}>
+                  <FaEdit /> Editar Transação
+                </S.ActionMenuItem>
                 <S.ActionMenuItem onClick={async () => await handleDeleteTransaction(transaction.id)}>
                   <FaX /> Excluir Transação
                 </S.ActionMenuItem>
@@ -95,6 +115,15 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
           transaction={selectedTransaction}
           onClose={closeModal}
         ></TransactionDetailModal>
+      )}
+
+      {isEditModalOpen && selectedTransaction && (
+        <EditTransactionModal
+          transaction={selectedTransaction}
+          onClose={closeEditModal}
+          onSave={refreshTransactions}
+        />
+        
       )}
     </S.TransactionsWrapper>
   );
