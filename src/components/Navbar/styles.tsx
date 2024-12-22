@@ -21,7 +21,7 @@ export const Logo = styled.img`
 export const NavItems = styled.div`
   display: flex;
   gap: 10px;
-  margin-right: 10px
+  margin-right: 50px
 `;
 
 export const NavItem = styled.div`
