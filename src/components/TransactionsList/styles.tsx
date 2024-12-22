@@ -68,6 +68,7 @@ export const HeaderItem = styled.div`
 `;
 
 export const TransactionsList = styled.ul`
+  min-height: 200px;
   overflow-y: auto;
   list-style: none;
   padding: 0;

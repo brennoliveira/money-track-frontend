@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaFile } from "react-icons/fa";
 import { FaEllipsisVertical, FaX } from "react-icons/fa6";
 import { TransactionTypes } from "../../enums";
@@ -11,7 +11,6 @@ import { TransactionListProps } from "./types";
 const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
   const [openMenuId, setOpenMenuId] = useState<number | null>(null);
   const [selectedTransaction, setSelectedTransaction] = useState<TransactionModel | null>(null);
-  const [updatedTransactions, setUpdatedTransactions] = useState<TransactionModel[]>(transactions);
 
   const toggleMenu = (transactionId: number) => {
     setOpenMenuId((prev) => (prev === transactionId ? null : transactionId));
@@ -21,7 +20,6 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
     try {
       await api.delete(`/api/transactions/${transactionId}`);
 
-      setUpdatedTransactions((prev) => prev.filter((transaction) => transaction.id !== transactionId));
       window.location.reload();
     } catch (error) {
       console.log("erro ao excluir: ", error);
@@ -37,10 +35,6 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
     setSelectedTransaction(null);
   };
 
-  useEffect(() => {
-    setUpdatedTransactions(transactions);
-  }, [transactions]);
-
   return (
     <S.TransactionsWrapper>
       <h2>Transações</h2>
@@ -54,7 +48,7 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
       </S.TransactionsHeader>
 
       <S.TransactionsList>
-        {updatedTransactions.map((transaction) => (
+        {transactions.map((transaction) => (
           <S.TransactionItem
             key={transaction.id}
             isExpense={transaction.type === TransactionTypes.EXPENSE}
