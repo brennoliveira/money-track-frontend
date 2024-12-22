@@ -52,6 +52,14 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
         <S.HeaderItem>Opções</S.HeaderItem>
       </S.TransactionsHeader>
 
+      {transactions.length === 0 ? (
+        <p style={{ textAlign: 'center', color: '#999', marginTop: '20px' }}>
+          Você ainda não possui nenhuma transação cadastrada.
+        </p>
+      )
+      : 
+      (
+
       <S.TransactionsList>
         {transactions.map((transaction) => (
           <S.TransactionItem
@@ -80,6 +88,7 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
           </S.TransactionItem>
         ))}
       </S.TransactionsList>
+      )}
 
       {selectedTransaction && (
         <TransactionDetailModal
