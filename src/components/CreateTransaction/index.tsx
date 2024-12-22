@@ -3,6 +3,7 @@ import { TransactionTypes } from "../../enums";
 import api from "../../services/api";
 import * as S from "./styles";
 import { TransactionModalProps } from "./types";
+import { toast } from "react-toastify";
 
 const TransactionModal: React.FC<TransactionModalProps> = ({ 
   onClose,
@@ -29,14 +30,18 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     try{
       e.preventDefault();
-      console.log("Nova transação criada:", formData);
 
+      toast.loading("Criando Transação...");
       await api.post("/api/transactions", { ...formData });
+
       
       window.location.reload();
+      
       onClose();
+      toast.success("Transação criada com sucesso!");
     } catch (error) {
       console.log(error);
+      toast.error(`Erro ao criar transação: ${error}`);
     }
   };
 

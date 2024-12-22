@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import * as S from './Styles';
 import api from "../../services/api";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
@@ -29,11 +30,15 @@ const Register: React.FC = () => {
 
     setIsLoading(true);
     try {
+      toast.loading("Criando conta...");
       await api.post('/api/users', { name, email, password });
+      
       navigate('/');
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
+      toast.success("Conta criada com sucesso!");
     } catch (error) {
       setErrorMessage('Erro ao realizar o cadastro. Tente novamente.');
+      toast.error(`Erro ao criar conta: ${error}`)
     } finally {
       setIsLoading(false);
     }

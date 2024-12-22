@@ -9,8 +9,11 @@ import { TransactionModel } from "../../models/TransactionModel";
 import api from "../../services/api";
 import * as S from "./styles";
 import Navbar from "../../components/Navbar";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  
   const [userData, setUserData] = useState({
     name: "",
     balance: 0,
@@ -23,8 +26,7 @@ const Dashboard = () => {
 
   const handleLogout = () => {
     window.localStorage.clear();
-    //TODO: mudar quando fizer deploy do backend
-    window.location.href = 'http://localhost:5173/';
+    navigate('/');
   };
 
   useEffect(() => {

@@ -7,6 +7,7 @@ import api from "../../services/api";
 import TransactionDetailModal from "../TransactionDetailModal";
 import * as S from "./styles";
 import { TransactionListProps } from "./types";
+import { toast } from "react-toastify";
 
 const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
   const [openMenuId, setOpenMenuId] = useState<number | null>(null);
@@ -18,11 +19,15 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
 
   const handleDeleteTransaction = async (transactionId: number) => {
     try {
+      toast.loading("Excluindo transação...");
       await api.delete(`/api/transactions/${transactionId}`);
-
+      console.log(2)
       window.location.reload();
+      
+      toast.success("Transação excluida com sucesso!");
     } catch (error) {
       console.log("erro ao excluir: ", error);
+      toast.error(`Erro ao excluir transação: ${error}`);
     }
   };
 
