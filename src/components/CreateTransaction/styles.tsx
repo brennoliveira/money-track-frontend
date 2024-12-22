@@ -19,7 +19,7 @@ export const ModalContent = styled.div`
   padding: 20px;
   border-radius: 8px;
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
 
   h2 {
     margin-top: 0;
@@ -27,8 +27,8 @@ export const ModalContent = styled.div`
   }
 
   form {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
 
     label {
@@ -47,7 +47,15 @@ export const ModalContent = styled.div`
       color: #f5f5f5;
     }
 
+    div {
+      grid-column: span 2;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
     button {
+      grid-column: span 3;
       padding: 10px;
       border: none;
       border-radius: 5px;
@@ -56,12 +64,12 @@ export const ModalContent = styled.div`
     }
 
     button[type="submit"] {
-      background-color: #52c41a; /* Verde */
+      background-color: #52c41a;
       color: #fff;
     }
 
     button[type="button"] {
-      background-color: #ff4d4f; /* Vermelho */
+      background-color: #ff4d4f;
       color: #fff;
     }
   }

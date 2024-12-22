@@ -64,6 +64,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
               name="amount"
               value={formData.amount}
               onChange={handleChange}
+              placeholder="R$"
               required
             />
           </label>
@@ -108,10 +109,10 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
           </label>
 
           <div>
-            <button type="submit">Adicionar</button>
             <button type="button" onClick={onClose}>
               Cancelar
             </button>
+            <button type="submit">Adicionar</button>
           </div>
         </form>
       </S.ModalContent>
