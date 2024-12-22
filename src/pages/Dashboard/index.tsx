@@ -60,7 +60,7 @@ const Dashboard = () => {
 
   return (
     <S.Container>
-      <Navbar onLogout={handleLogout} />
+      <Navbar onLogout={handleLogout} userName={userData.name} />
 
       <S.Content>
         <S.TransactionHeader>

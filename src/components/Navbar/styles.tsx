@@ -62,14 +62,15 @@ export const Dropdown = styled.div`
   z-index: 1000;
 `;
 
-export const DropdownItem = styled.div`
+export const DropdownItem = styled.div<{ isAction: boolean }>`
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 10px 15px;
   color: #fff;
-  cursor: pointer;
+  cursor: ${({ isAction }) => (isAction ? "pointer" : "")};
   font-size: 0.9rem;
+  border-bottom: 1px solid #D3D3D3;
 
   svg {
     font-size: 1.2rem; 
@@ -77,7 +78,7 @@ export const DropdownItem = styled.div`
   }
 
   &:hover {
-    background-color: #4caf50;
+    background-color: ${({ isAction }) => (isAction ? "#4caf50" : "")};
     color: #fff;
     border-radius: 8px;
 
@@ -86,3 +87,7 @@ export const DropdownItem = styled.div`
     }
   }
 `;
+
+export const DropdownInfoItem = styled.div`
+
+`

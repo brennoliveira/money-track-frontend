@@ -3,7 +3,7 @@ import { NavbarProps } from "./types";
 import * as S from './styles';
 import { FaSignOutAlt, FaUserCircle } from "react-icons/fa";
 
-const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
+const Navbar: React.FC<NavbarProps> = ({ onLogout, userName }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
   const toggleDropdown = () => {
@@ -23,7 +23,8 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
         </S.UserIcon>
         {isDropdownOpen && (
           <S.Dropdown>
-            <S.DropdownItem onClick={onLogout}><FaSignOutAlt /> Logout</S.DropdownItem>
+            <S.DropdownItem isAction={false}>Olá, {userName}</S.DropdownItem>
+            <S.DropdownItem onClick={onLogout} isAction={true}><FaSignOutAlt /> Logout</S.DropdownItem>
           </S.Dropdown>
         )}
       </S.UserWrapper>
