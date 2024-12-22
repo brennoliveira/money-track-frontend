@@ -23,6 +23,8 @@ const Dashboard = () => {
 
   const handleLogout = () => {
     window.localStorage.clear();
+    //TODO: mudar quando fizer deploy do backend
+    window.location.href = 'http://localhost:5173/';
   };
 
   useEffect(() => {
