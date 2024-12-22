@@ -42,7 +42,7 @@ const Login: React.FC = () => {
       {errorMessage && <S.ErrorMessage>{errorMessage}</S.ErrorMessage>}
       
       <S.Form onSubmit={handleSubmit}>
-        <S.Label htmlFor="password">Email:</S.Label>
+        <S.Label htmlFor="email">Email:</S.Label>
         <S.Input
           type="email"
           placeholder="joaosilva@email.com"
@@ -50,6 +50,7 @@ const Login: React.FC = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
 
+        <S.Label htmlFor="password">Senha:</S.Label>
         <S.PasswordContainer>
           <S.Input
             id="password"
