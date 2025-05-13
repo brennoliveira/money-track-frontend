@@ -1,7 +1,10 @@
 import axios from "axios";
 
+const deploy = 'https://money-track-backend-production.up.railway.app';
+// const local = 'http://localhost:3000';
+
 const api = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: deploy,
   headers: {
     'Content-Type': 'application/json',
   },

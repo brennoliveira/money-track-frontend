@@ -33,12 +33,15 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const userResponse = await api.get("/api/users/me");
+        const userBalance = await api.get("/api/users/me/balance");
         const transactionsResponse = await api.get("/api/transactions");
         const categoriesResponse = await api.get("/api/categories");
-
-        setUserData(userResponse.data);
-        setTransactions(transactionsResponse.data);
-        setCategories(categoriesResponse.data);
+        setUserData({
+          name: userResponse.data.data.name,
+          balance: userBalance.data.data.balance,
+        });
+        setTransactions(transactionsResponse.data.data);
+        setCategories(categoriesResponse.data.data);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         setErrorMessage("Erro ao carregar dados. Tente novamente mais tarde.");
