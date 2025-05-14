@@ -1106,3 +1106,4 @@ Error generating stack: `+i.message+`
     background-color: ${({theme:e})=>e.secondary};
   }
 `,mS=()=>{const e=us(),n=["/dashboard"].includes(e.pathname);return x.jsxs(x.Fragment,{children:[n?x.jsx(pS,{}):x.jsx(hS,{}),x.jsxs(C1,{children:[x.jsx(Lr,{path:"/",element:x.jsx(Nx,{})}),x.jsx(Lr,{path:"/signup",element:x.jsx(yw,{})}),x.jsx(Lr,{path:"/forgot-password",element:x.jsx(Tw,{})}),x.jsx(Lr,{path:"/dashboard",element:x.jsx(Rw,{children:x.jsx(dS,{})})})]})]})};function gS(){return x.jsxs(x.Fragment,{children:[x.jsx(mS,{}),x.jsx(gw,{})]})}const yS={background:"#121212",text:"#FFFFFF",primary:"#BB86FC",secondary:"#03DAC6",error:"#CF6679"};Up(document.getElementById("root")).render(x.jsx(C.StrictMode,{children:x.jsx(Py,{theme:yS,children:x.jsx(R1,{children:x.jsx(gS,{})})})}));
+//# sourceMappingURL=index-DzIRiwUm.js.map
