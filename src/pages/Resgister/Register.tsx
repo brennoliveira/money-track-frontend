@@ -4,6 +4,7 @@ import * as S from './Styles';
 import api from "../../services/api";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
+import logo from "../../assets/images/logo.jpg";
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ const Register: React.FC = () => {
 
   return (
     <S.FormWrapper>
-      <S.Logo src="/src/assets/images/logo.jpg" alt="Logo do Sistema" />
+      <S.Logo src={logo} alt="Logo do Sistema" />
 
       {errorMessage && <S.ErrorMessage>{errorMessage}</S.ErrorMessage>}
       

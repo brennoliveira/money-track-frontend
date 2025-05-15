@@ -1,6 +1,7 @@
 import { useState } from "react";
 import * as S from './Styles.tsx';
 import api from "../../services/api.ts";
+import logo from "../../assets/images/logo.jpg";
 
 const ForgotPassword: React.FC = () => {
   const [email, setEmail] = useState<string>('');
@@ -29,7 +30,7 @@ const ForgotPassword: React.FC = () => {
 
   return (
     <S.FormWrapper>
-      <S.Logo src="/src/assets/images/logo.jpg" alt="Logo do Sistema" />
+      <S.Logo src={logo} alt="Logo do Sistema" />
 
       {message && <S.ErrorMessage>{message}</S.ErrorMessage>}
 

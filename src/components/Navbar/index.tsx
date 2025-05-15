@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavbarProps } from "./types";
 import * as S from './styles';
 import { FaSignOutAlt, FaUserCircle } from "react-icons/fa";
+import logo from "../../assets/images/logo.jpg";
 
 const Navbar: React.FC<NavbarProps> = ({ onLogout, userName }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
@@ -12,7 +13,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout, userName }) => {
 
   return (
     <S.Navbar>
-      <S.Logo src="/src/assets/images/logo.jpg" alt="Logo do Sistema" />
+      <S.Logo src={logo} alt="Logo do Sistema" />
 
       <S.NavItems>
         <S.NavItem>Dashboard</S.NavItem>

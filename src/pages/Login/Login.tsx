@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import * as S from './Styles';
 import api from "../../services/api";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import logo from "../../assets/images/logo.jpg";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const Login: React.FC = () => {
 
   return (
     <S.FormWrapper>
-      <S.Logo src="/src/assets/images/logo.jpg" alt="Logo do Sistema" />
+      <S.Logo src={logo} alt="Logo do Sistema" />
       {/* <h1>Login</h1> */}
       
       {errorMessage && <S.ErrorMessage>{errorMessage}</S.ErrorMessage>}
